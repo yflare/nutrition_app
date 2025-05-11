@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物营养成分查询</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://up.boohee.cn/house/u/site/pc/index/food-database-bg.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #325b28;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(231, 229, 229, 0.5);
+            font-size: 2.5em;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            width: 90%; /* 调整宽度以适应屏幕 */
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(245, 241, 241, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(199, 197, 197, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: float 3s ease-in-out infinite; /* 添加浮动动画 */
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px); /* 向上浮动10px */
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .search-container {
+            width: 100%; /* 使搜索容器占满宽度 */
+            margin-bottom: 20px;
+            display: flex; /* 使用flex布局 */
+            justify-content: space-between; /* 在搜索框和按钮之间留出间距 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        .form-control {
+            border-radius: 25px; /* 圆润效果 */
+            border: 1px solid #ccc; /* 边框颜色 */
+            padding: 10px 20px; /* 内边距 */
+            transition: border-color 0.3s ease; /* 平滑过渡效果 */
+            width: 100%; /* 占满可用空间 */
+            max-width: 400px; /* 最大宽度 */
+            font-size: 1.2em; /* 设置字号与主题一致 */
+        }
+
+        .form-control:focus {
+            border-color: #bad4bb; /* 聚焦时的边框颜色 */
+            box-shadow: 0 0 5px rgba(186, 212, 187, 0.5); /* 聚焦时的阴影 */
+        }
+
+        .btn-search {
+            background-color: #bad4bb; /* 按钮颜色设为绿色 */
+            color: white; /* 按钮文本颜色 */
+            border: none; /* 去掉黑边框 */
+            border-radius: 25px; /* 圆润效果 */
+            padding: 10px 20px; /* 内边距 */
+            transition: background-color 0.3s ease; /* 平滑过渡效果 */
+            font-size: 1.2em; /* 设置字号与主题一致 */
+            margin-left: 10px; /* 增加按钮与搜索框的间距 */
+        }
+
+        .btn-search:hover {
+            background-color: #9ec1a3; /* 悬停时颜色 */
+        }
+
+        .tips {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #858484;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>食物营养成分查询</h1>
+        <div class="search-container">
+            <form method="POST" action="/diabetes" class="d-flex" style="width: 100%;">
+                <input type="text" name="food_name" class="form-control" placeholder="请输入你想要查询的食物名称" required>
+                <button class="btn btn-search" type="submit">一键搜索</button>
+            </form>
+        </div>
+        <div class="tips">
+            ——————您可以搜索如：苹果、香蕉、米饭、面包、鸡肉、牛肉、油条等——————
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物营养成分查询</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #searchForm {
+            margin-bottom: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>食物营养成分查询系统</h1>
+    <form id="searchForm">
+        <label for="foodName">请输入食物名称：</label>
+        <input type="text" id="foodName" name="foodName" required>
+        <button type="submit">查询</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();  // 阻止表单提交刷新页面
+            const foodName = document.getElementById('foodName').value;
+            fetch(`http://localhost:3000/search?name=${foodName}`)
+                .then(response => response.json())
+                .then(data => {
+                    let resultDiv = document.getElementById('result');
+                    if (data.error) {
+                        resultDiv.innerHTML = `<p>${data.error}</p>`;
+                    } else {
+                        resultDiv.innerHTML = `
+                            <h2>${data.name}</h2>
+                            <p><strong>热量:</strong> ${data.calories} 大卡</p>
+                            <p><strong>碳水化合物:</strong> ${data.carbs} 克</p>
+                            <p><strong>脂肪:</strong> ${data.fat} 克</p>
+                            <p><strong>蛋白质:</strong> ${data.protein} 克</p>
+                            <p><strong>纤维素:</strong> ${data.fiber} 克</p>
+                            <p><strong>类别:</strong> ${data.category}</p>
+                            <p><strong>特征:</strong> ${data.feature}</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = '<p>查询失败，请稍后再试。</p>';
+                });
+        });
+    </script>
+    <a href="/calorie_calculator" class="btn btn-primary">Go to Calorie Calculator</a>
+</body>
+
+</html>
+
+"""npm config set prefix "D:\Program Files\nodejs\node_global"
+npm config set cache "D:\Program Files\nodejs\node_cache"
+
+D:\Program Files\nodejs\node_global\node_modules
+npm install express -g
+npm cache clean --force"""

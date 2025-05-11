@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物与健康 - 查询结果</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://up.boohee.cn/house/u/site/pc/index/food-database-bg.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            background: rgba(228, 237, 220, 0.9); /* 半透明背景 */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.03); /* 悬浮放大 */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #325b28; /* 标题颜色 */
+            font-size: 4.0em;
+            text-align: center;
+        }
+
+        .query-section {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .text-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .image-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        .text-container p {
+            font-size: 1.4em; /* 字体增大 */
+            line-height: 1.8em; /* 行间距增大 */
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: #3f6b33; /* 强调文字颜色 */
+        }
+
+        /* 按钮样式 */
+        .btn {
+            background-color: #9dc89e; /* 按钮绿色 */
+            color: white;
+            font-size: 1.2em;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center; /* 确保文本居中 */
+            width: 100%; /* 确保按钮宽度足够大，使文字居中 */
+            max-width: 300px; /* 控制按钮的最大宽度 */
+        }
+
+        .btn:hover {
+            background-color: #95c698; /* 悬浮时的按钮颜色 */
+        }
+
+        /* 父容器：用于水平居中按钮 */
+        .back-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-container {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>查询结果</h1>
+        
+        <!-- 问题展示 -->
+        <div class="query-section">
+            <p><strong>问题：</strong>{{ query }}</p>
+        </div>
+
+        {% if result == "无法解析问题，请尝试更明确的提问。" %}
+            <p>{{ result }}</p>
+        {% else %}
+            <!-- 结果内容区域 -->
+            {% for item in result %}
+            <div class="content-section">
+                <!-- 文本内容 -->
+                <div class="text-container">
+                    <p><strong>食品名称：</strong>{{ item.name }}</p>
+                    <p><strong>作用：</strong>{{ item.effect }}</p>
+                </div>
+                
+                <!-- 图片展示 -->
+                <div class="image-container">
+                    <p><strong>图片：</strong><br>{{ item.image|safe }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- 返回上一页按钮 -->
+        <div class="back-btn">
+            <a href="javascript:history.back()" class="btn">返回上一页</a>
+        </div>
+    </div>
+</body>
+</html>

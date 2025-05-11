@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物营养成分查询</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>食物营养成分查询</h1>
+        <form method="POST" action="/">
+            <input type="text" name="food_name" placeholder="Enter food name" required>
+            <button type="submit">搜索</button>
+        </form>
+
+        {% if nutrition_data and nutrition_data|length > 0 %}
+        <h2>结果： "{{ nutrition_data[0]['name'] }}"</h2>
+        <img src="{{ nutrition_data[0]['image_url'] }}" alt="Food Image" width="200">
+        <table>
+            <tr>
+                <th>食品名称</th>
+                <th>详情页链接</th>
+                <th>每100克热量(大卡)</th>
+                <th>每100克碳水化合物(克)</th>
+                <th>每100克脂肪(克)</th>
+                <th>每100克蛋白质(克)</th>
+                <th>纤维素(克)</th>
+                <th>类别</th>
+            </tr>
+            <tr>
+                <td>{{ nutrition_data[0]['name'] }}</td>
+                <td><a href="{{ nutrition_data[0]['detail_url'] }}">更多详情</a></td>
+                <td>{{ nutrition_data[0]['calories'] }}</td>
+                <td>{{ nutrition_data[0]['carbs'] }}</td>
+                <td>{{ nutrition_data[0]['fat'] }}</td>
+                <td>{{ nutrition_data[0]['protein'] }}</td>
+                <td>{{ nutrition_data[0]['fiber'] }}</td>
+                <td>{{ nutrition_data[0]['category'] }}</td>
+            </tr>
+        </table>
+
+
+        <h3>特征：</h3>
+        <ul>
+            {% for data in nutrition_data %}
+            <li>{{ data['feature'] }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>没有找到目标食物，请尝试一个新的食物名称。</p>
+        {% endif %}

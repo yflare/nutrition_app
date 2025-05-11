@@ -1,0 +1,48 @@
+\\欢迎界面
+body {
+    font-family: 'Lora', serif;
+    background-color: #f4f4f9; /* 淡色背景 */
+}
+
+.hero {
+    background-image: url('https://up.boohee.cn/house/u/site/pc/index/food-database-bg.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 30px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    max-width: 800px; /* 限制最大宽度 */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* 添加文本阴影 */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-custom {
+    background-color: rgba(255, 255, 255, 0.9); /* 淡色按钮 */
+    color: #93ca7a;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(221, 231, 241, 0.3);
+    margin: 10px; /* 按钮之间的间距 */
+}
+
+.btn-custom:hover {
+    background-color: hsl(93, 41%, 64%); /* 悬停时变色 */
+    color: white;
+    box-shadow: 0 4px 15px rgba(143, 186, 232, 0.5);
+}
+
+
